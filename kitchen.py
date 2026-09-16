@@ -21,7 +21,7 @@ class Quantity:
 
 class Converter:
     def reduce(self, source, unit):
-        return source
+        return source.reduce(unit)
 
 class Sum:
     def __init__(self, left, right):
@@ -29,4 +29,7 @@ class Sum:
         self.right = right
 
     def reduce(self, unit):
-        return 1
+        return Quantity(
+            self.left.amount + self.right.amount,
+            unit
+        )
